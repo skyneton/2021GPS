@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public Enemy enemy;
     public GameObject enemyGroup;
+    private bool spawn = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void spawnEnemy()
     {
-        if (enemy && enemyGroup && Random.Range(0, 1001) <= 20)
+        if (spawn && enemy && enemyGroup && Random.Range(0, 1001) <= 15)
         {
             float posY = Random.Range(-4.6f, 4.6f);
             int direction = Random.Range(0, 2) == 0 ? 1 : -1;
@@ -29,8 +30,12 @@ public class EnemySpawner : MonoBehaviour
             e.SetDirectionVector(direction);
             e.transform.position = new Vector3(posX, posY, -1);
             e.transform.parent = enemyGroup.transform;
-            float da = Random.Range(8f, 15f);
+            float da = Random.Range(4f, 10f);
             e.setDamage(da);
         }
+    }
+
+    public void OffSpawner() {
+        spawn = false;
     }
 }

@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
         {
             Enemy enemy = collision.GetComponent<Enemy>();
             HP -= enemy.getDamage();
-            Debug.Log(HP);
         }
     }
 
